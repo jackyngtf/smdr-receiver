@@ -43,14 +43,21 @@ def run_server():
                                 break
                             
                             # Append to daily log file
-                            # Avaya SMDR is typically CR/LF terminated lines. 
-                            # We'll just append raw bytes to keep it simple and robust.
                             try:
                                 today = datetime.date.today().isoformat()
                                 filename = os.path.join(DATA_DIR, f"smdr_{today}.csv")
+                                
+                                # Check if file exists to write header
+                                file_exists = os.path.exists(filename)
+                                
                                 with open(filename, 'ab') as f:
+                                    if not file_exists:
+                                        # Standard Avaya IP Office SMDR Header
+                                        header = b"Call Start,Connected Time,Ring Time,Caller,Direction,Called Number,Dialled Number,Account,Is Internal,Call ID,Continuation,Party1Device,Party1Name,Party2Device,Party2Name,Hold Time,Park Time,AuthValid,AuthCode,UserCharged,CallCharge,Currency,AmountAtLastUserChange,CallUnits,UnitsAtLastUserChange,CostPerUnit,MarkUp,ExternalTargetingCause,ExternalTargeterId,ExternalTargetedNumber\r\n"
+                                        f.write(header)
+                                    
                                     f.write(data)
-                                    f.flush() # Ensure data is written immediately
+                                    f.flush()
                             except Exception as file_e:
                                 print(f"Error writing to file: {file_e}")
                             
