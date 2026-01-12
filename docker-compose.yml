@@ -11,4 +11,5 @@ services:
       - ./data:/data
     environment:
       - TZ=Australia/Melbourne
+    network_mode: bridge
     restart: unless-stopped
