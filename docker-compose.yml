@@ -9,4 +9,6 @@ services:
       # Map the NAS docker folder to the container's data folder
       # User indicated path: docker/smdr-receiver
       - ./data:/data
+    environment:
+      - TZ=Australia/Melbourne
     restart: unless-stopped
