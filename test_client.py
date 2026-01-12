@@ -3,7 +3,7 @@ import time
 import sys
 
 # Configuration
-HOST = '127.0.0.1'
+HOST = '10.10.206.7'
 PORT = 9000
 
 if len(sys.argv) > 1:
