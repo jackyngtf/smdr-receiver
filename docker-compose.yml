@@ -1,0 +1,12 @@
+services:
+  smdr-receiver:
+    build: .
+    container_name: smdr-receiver
+    image: smdr-receiver
+    ports:
+      - "9000:9000"
+    volumes:
+      # Map the NAS docker folder to the container's data folder
+      # User indicated path: docker/smdr-receiver
+      - ./data:/data
+    restart: unless-stopped
