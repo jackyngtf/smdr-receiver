@@ -1,6 +1,6 @@
 # SMDR Receiver (Dockerized)
 
-A lightweight Dockerized Python service to receive Avaya IP Office SMDR records and save them to CSV files. This replaces the legacy Windows Service.
+A lightweight Dockerized Python service to receive Avaya IP Office SMDR records and save them to CSV files. This replaces the legacy Windows Service found [here](https://davehope.co.uk/projects/smdr-receiver/).
 
 ## Features
 - Listens on TCP Port 9000 (configurable).
